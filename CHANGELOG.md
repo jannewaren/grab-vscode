@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.0
+
+### Added
+
+- **Grab: Remote URL with Line** — copy a GitHub/GitLab permalink with line number anchor (`#L42` or `#L10-L20`)
+
+### Changed
+
+- **Grab: Remote URL** now copies the file permalink without line anchor (previously included line numbers)
+
 ## 0.3.0
 
 ### Changed

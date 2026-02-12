@@ -294,10 +294,9 @@ async function diagnosticsAll() {
   await copyToClipboard(result, `${lines.length} diagnostic(s)`);
 }
 
-async function remoteUrl() {
-  const editor = validateEditor();
-  if (!editor) return;
-
+async function buildRemoteFileUrl(
+  editor: vscode.TextEditor
+): Promise<{ baseUrl: string; blobUrl: string; isGitLab: boolean } | undefined> {
   const fsPath = editor.document.uri.fsPath;
   const workspaceFolder = vscode.workspace.getWorkspaceFolder(
     editor.document.uri
@@ -308,21 +307,21 @@ async function remoteUrl() {
   const remoteRaw = await git(cwd, "remote", "get-url", "origin");
   if (!remoteRaw) {
     showStatus("$(error) No git remote found");
-    return;
+    return undefined;
   }
 
   // Get current commit SHA for a permalink
   const sha = await git(cwd, "rev-parse", "HEAD");
   if (!sha) {
     showStatus("$(error) Not a git repository");
-    return;
+    return undefined;
   }
 
   // Get the file path relative to the git repo root
   const repoRoot = await git(cwd, "rev-parse", "--show-toplevel");
   if (!repoRoot) {
     showStatus("$(error) Cannot determine repo root");
-    return;
+    return undefined;
   }
   const relativePath = require("path").relative(repoRoot, fsPath);
 
@@ -330,30 +329,49 @@ async function remoteUrl() {
   const baseUrl = remoteToHttps(remoteRaw);
   if (!baseUrl) {
     showStatus("$(error) Unsupported remote format");
-    return;
+    return undefined;
   }
 
-  // Detect GitLab vs GitHub style
   const isGitLab = baseUrl.includes("gitlab");
+  const blobPath = isGitLab
+    ? `/-/blob/${sha}/${relativePath}`
+    : `/blob/${sha}/${relativePath}`;
+
+  return { baseUrl, blobUrl: `${baseUrl}${blobPath}`, isGitLab };
+}
+
+async function remoteUrl() {
+  const editor = validateEditor();
+  if (!editor) return;
+
+  const result = await buildRemoteFileUrl(editor);
+  if (!result) return;
+
+  await copyToClipboard(result.blobUrl, `remote URL`);
+}
+
+async function remoteUrlWithLine() {
+  const editor = validateEditor();
+  if (!editor) return;
+
+  const result = await buildRemoteFileUrl(editor);
+  if (!result) return;
+
   const { startLine, endLine } = normalizeSelection(editor.selection);
 
-  let url: string;
-  if (isGitLab) {
-    const blobPath = `/-/blob/${sha}/${relativePath}`;
-    const fragment =
+  let fragment: string;
+  if (result.isGitLab) {
+    fragment =
       startLine === endLine ? `#L${startLine}` : `#L${startLine}-${endLine}`;
-    url = `${baseUrl}${blobPath}${fragment}`;
   } else {
-    // GitHub / default
-    const blobPath = `/blob/${sha}/${relativePath}`;
-    const fragment =
+    fragment =
       startLine === endLine
         ? `#L${startLine}`
         : `#L${startLine}-L${endLine}`;
-    url = `${baseUrl}${blobPath}${fragment}`;
   }
 
-  await copyToClipboard(url, `remote URL`);
+  const url = `${result.blobUrl}${fragment}`;
+  await copyToClipboard(url, `remote URL with line`);
 }
 
 function remoteToHttps(remote: string): string | undefined {
@@ -385,7 +403,8 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand("grab.symbolContext", symbolContext),
     vscode.commands.registerCommand("grab.diagnosticsFile", diagnosticsFile),
     vscode.commands.registerCommand("grab.diagnosticsAll", diagnosticsAll),
-    vscode.commands.registerCommand("grab.remoteUrl", remoteUrl)
+    vscode.commands.registerCommand("grab.remoteUrl", remoteUrl),
+    vscode.commands.registerCommand("grab.remoteUrlWithLine", remoteUrlWithLine)
   );
 }
 

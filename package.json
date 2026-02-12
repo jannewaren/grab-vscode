@@ -2,7 +2,7 @@
   "name": "grab",
   "displayName": "Grab",
   "description": "Grab context from VSCode for external AI tools — paths, code snippets, remote URLs",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "publisher": "janne-waren",
   "license": "MIT",
   "engines": {
@@ -54,6 +54,10 @@
       {
         "command": "grab.remoteUrl",
         "title": "Grab: Remote URL"
+      },
+      {
+        "command": "grab.remoteUrlWithLine",
+        "title": "Grab: Remote URL with Line"
       }
     ],
     "keybindings": [
