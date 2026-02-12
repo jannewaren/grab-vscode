@@ -11,7 +11,7 @@ Grab context from VSCode for external AI tools — paths, code snippets, symbol 
 
 On Windows/Linux, use `Ctrl` instead of `Cmd`.
 
-Type `Grab:` in the Command Palette to see all 10 commands.
+Type `Grab:` in the Command Palette to see all 11 commands.
 
 ## All Commands
 
@@ -27,6 +27,7 @@ Type `Grab:` in the Command Palette to see all 10 commands.
 | Diagnostics (File) | — | `Cmd+Shift+Alt+D` | Errors/warnings for current file |
 | Diagnostics (All) | — | `Cmd+Shift+Alt+E` | Errors/warnings for entire workspace |
 | Remote URL | — | `Cmd+Shift+Alt+G` | GitHub/GitLab permalink |
+| Remote URL with Line | — | `Cmd+Shift+Alt+L` | GitHub/GitLab permalink with line/range anchor |
 
 ## Adding Keyboard Shortcuts
 
@@ -91,7 +92,15 @@ src/auth.ts:42: warning: 'validate' is declared but never used [typescript]
 
 ### Remote URL
 
-Generates a permalink using the current commit SHA:
+Generates a permalink to the file using the current commit SHA:
+
+```
+https://github.com/user/repo/blob/abc123/src/utils/auth.ts
+```
+
+### Remote URL with Line
+
+Generates a permalink with line or range anchors:
 
 ```
 https://github.com/user/repo/blob/abc123/src/utils/auth.ts#L10-L15
