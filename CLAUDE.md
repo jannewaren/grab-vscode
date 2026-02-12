@@ -11,7 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 npm run compile          # Bundle src/extension.ts → dist/extension.js
 npm run watch            # Watch mode (auto-rebuild on save)
-npx @vscode/vsce package --allow-missing-repository  # Build .vsix for distribution
+npx @vscode/vsce package # Build .vsix for distribution
 ```
 
 To test: open project in VSCode, press F5 to launch Extension Development Host.
