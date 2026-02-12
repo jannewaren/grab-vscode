@@ -2,7 +2,7 @@
 
 | Shortcut | Command |
 |---|---|
-| `Cmd+Shift+Alt+C` | Path with Line |
+| `Cmd+Shift+Alt+C` | Relative Path with Line |
 | `Cmd+Shift+Alt+X` | Code with Context |
 
 ## Suggested Shortcuts for Other Commands

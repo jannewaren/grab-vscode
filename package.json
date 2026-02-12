@@ -17,7 +17,7 @@
     "commands": [
       {
         "command": "grab.pathWithLine",
-        "title": "Grab: Path with Line"
+        "title": "Grab: Relative Path with Line"
       },
       {
         "command": "grab.fullPathWithLine",
@@ -80,7 +80,7 @@
         "steps": [
           {
             "id": "grab.walkthrough.pathWithLine",
-            "title": "Copy a Path with Line Number",
+            "title": "Copy a Relative Path with Line Number",
             "description": "Place your cursor on any line and press **Cmd+Shift+Alt+C** (Mac) or **Ctrl+Shift+Alt+C** (Windows/Linux) to copy the relative path with line number.\n\nPaste into any AI tool to give it precise file context.\n\n[Try it now](command:grab.pathWithLine)",
             "media": {
               "markdown": "media/step-path-with-line.md"

@@ -14,7 +14,7 @@
 
 ### Changed
 
-- Reduced default keybindings from 10 to 2 (`Cmd+Shift+Alt+C` for Path with Line, `Cmd+Shift+Alt+X` for Code with Context)
+- Reduced default keybindings from 10 to 2 (`Cmd+Shift+Alt+C` for Relative Path with Line, `Cmd+Shift+Alt+X` for Code with Context)
 
 ### Added
 
@@ -36,7 +36,7 @@ Initial release.
 
 ### Commands
 
-- **Grab: Path with Line** — copy relative path with line number (`src/file.ts:42`)
+- **Grab: Relative Path with Line** — copy relative path with line number (`src/file.ts:42`)
 - **Grab: Full Path with Line** — copy absolute path with line number
 - **Grab: Relative Path** — copy relative path without line number
 - **Grab: Full Path** — copy absolute path without line number

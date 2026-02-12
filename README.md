@@ -6,7 +6,7 @@ Grab context from VSCode for external AI tools — paths, code snippets, symbol 
 
 | Shortcut | Command | What it copies |
 |---|---|---|
-| `Cmd+Shift+Alt+C` | Grab: Path with Line | `src/file.ts:42` |
+| `Cmd+Shift+Alt+C` | Grab: Relative Path with Line | `src/file.ts:42` |
 | `Cmd+Shift+Alt+X` | Grab: Code with Context | Path + fenced code block |
 
 On Windows/Linux, use `Ctrl` instead of `Cmd`.
@@ -17,7 +17,7 @@ Type `Grab:` in the Command Palette to see all 10 commands.
 
 | Command | Default Shortcut | Suggested Shortcut | Output |
 |---|---|---|---|
-| Path with Line | `Cmd+Shift+Alt+C` | — | `src/file.ts:42` or `src/file.ts:42-50` |
+| Relative Path with Line | `Cmd+Shift+Alt+C` | — | `src/file.ts:42` or `src/file.ts:42-50` |
 | Full Path with Line | — | `Cmd+Shift+Alt+F` | `/Users/.../file.ts:42` |
 | Relative Path | — | `Cmd+Shift+Alt+R` | `src/file.ts` |
 | Full Path | — | `Cmd+Shift+Alt+A` | `/Users/.../file.ts` |
@@ -40,7 +40,7 @@ On Windows/Linux, use **Ctrl** instead of **Cmd**.
 
 ## Examples
 
-### Path with Line
+### Relative Path with Line
 
 Place cursor on line 42:
 
