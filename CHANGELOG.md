@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0
+
+### Added
+
+- **Grab: Diagnostics (File)** — copy all errors/warnings from the current file in `file:line: severity: message [source]` format
+- **Grab: Diagnostics (All)** — copy all errors/warnings from the entire workspace
+- Keybinding `Cmd+Shift+Alt+D` for file diagnostics
+- Keybinding `Cmd+Shift+Alt+E` for all diagnostics
+
 ## 0.1.0
 
 Initial release.

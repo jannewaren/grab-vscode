@@ -232,6 +232,68 @@ function findInnermostSymbol(
   return undefined;
 }
 
+function formatDiagnostic(
+  uri: vscode.Uri,
+  d: vscode.Diagnostic
+): string {
+  const path = vscode.workspace.asRelativePath(uri, false);
+  const line = d.range.start.line + 1;
+  const severity = diagnosticSeverityLabel(d.severity);
+  const source = d.source ? ` [${d.source}]` : "";
+  return `${path}:${line}: ${severity}: ${d.message}${source}`;
+}
+
+function diagnosticSeverityLabel(s: vscode.DiagnosticSeverity): string {
+  switch (s) {
+    case vscode.DiagnosticSeverity.Error:
+      return "error";
+    case vscode.DiagnosticSeverity.Warning:
+      return "warning";
+    case vscode.DiagnosticSeverity.Information:
+      return "info";
+    case vscode.DiagnosticSeverity.Hint:
+      return "hint";
+  }
+}
+
+async function diagnosticsFile() {
+  const editor = validateEditor();
+  if (!editor) return;
+
+  const diagnostics = vscode.languages.getDiagnostics(editor.document.uri);
+  if (diagnostics.length === 0) {
+    showStatus("$(check) No diagnostics for this file");
+    return;
+  }
+
+  const lines = diagnostics.map((d) =>
+    formatDiagnostic(editor.document.uri, d)
+  );
+  const result = lines.join("\n");
+  await copyToClipboard(result, `${diagnostics.length} diagnostic(s)`);
+}
+
+async function diagnosticsAll() {
+  const all = vscode.languages.getDiagnostics();
+  const lines: string[] = [];
+
+  for (const [uri, diagnostics] of all) {
+    if (diagnostics.length === 0) continue;
+    if (uri.scheme !== "file") continue;
+    for (const d of diagnostics) {
+      lines.push(formatDiagnostic(uri, d));
+    }
+  }
+
+  if (lines.length === 0) {
+    showStatus("$(check) No diagnostics in workspace");
+    return;
+  }
+
+  const result = lines.join("\n");
+  await copyToClipboard(result, `${lines.length} diagnostic(s)`);
+}
+
 async function remoteUrl() {
   const editor = validateEditor();
   if (!editor) return;
@@ -321,6 +383,8 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand("grab.allOpenPaths", allOpenPaths),
     vscode.commands.registerCommand("grab.codeWithContext", codeWithContext),
     vscode.commands.registerCommand("grab.symbolContext", symbolContext),
+    vscode.commands.registerCommand("grab.diagnosticsFile", diagnosticsFile),
+    vscode.commands.registerCommand("grab.diagnosticsAll", diagnosticsAll),
     vscode.commands.registerCommand("grab.remoteUrl", remoteUrl)
   );
 }

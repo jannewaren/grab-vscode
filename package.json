@@ -2,7 +2,7 @@
   "name": "grab",
   "displayName": "Grab",
   "description": "Grab context from VSCode for external AI tools — paths, code snippets, remote URLs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "janne-waren",
   "license": "MIT",
   "engines": {
@@ -44,6 +44,14 @@
         "title": "Grab: Symbol Context"
       },
       {
+        "command": "grab.diagnosticsFile",
+        "title": "Grab: Diagnostics (File)"
+      },
+      {
+        "command": "grab.diagnosticsAll",
+        "title": "Grab: Diagnostics (All)"
+      },
+      {
         "command": "grab.remoteUrl",
         "title": "Grab: Remote URL"
       }
@@ -83,6 +91,16 @@
         "command": "grab.symbolContext",
         "key": "ctrl+shift+alt+s",
         "mac": "cmd+shift+alt+s"
+      },
+      {
+        "command": "grab.diagnosticsFile",
+        "key": "ctrl+shift+alt+d",
+        "mac": "cmd+shift+alt+d"
+      },
+      {
+        "command": "grab.diagnosticsAll",
+        "key": "ctrl+shift+alt+e",
+        "mac": "cmd+shift+alt+e"
       },
       {
         "command": "grab.remoteUrl",

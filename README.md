@@ -1,6 +1,6 @@
 # Grab
 
-Grab context from VSCode for external AI tools — paths, code snippets, symbol definitions, and remote URLs.
+Grab context from VSCode for external AI tools — paths, code snippets, symbol definitions, diagnostics, and remote URLs.
 
 Type `Grab:` in the Command Palette to see all commands.
 
@@ -15,6 +15,8 @@ Type `Grab:` in the Command Palette to see all commands.
 | `Cmd+Shift+Alt+O` | Grab: All Open Paths | Newline-separated relative paths |
 | `Cmd+Shift+Alt+X` | Grab: Code with Context | Path + fenced code block |
 | `Cmd+Shift+Alt+S` | Grab: Symbol Context | Full symbol definition + path |
+| `Cmd+Shift+Alt+D` | Grab: Diagnostics (File) | Errors/warnings for current file |
+| `Cmd+Shift+Alt+E` | Grab: Diagnostics (All) | Errors/warnings for entire workspace |
 | `Cmd+Shift+Alt+G` | Grab: Remote URL | GitHub/GitLab permalink |
 
 On Windows/Linux, use `Ctrl` instead of `Cmd`.
@@ -59,6 +61,15 @@ export function validateToken(token: string): boolean {
   const decoded = decode(token);
   return decoded.exp > Date.now() / 1000;
 }
+```
+
+### Diagnostics
+
+Copy errors and warnings with file locations, ready for "fix these" workflows:
+
+```
+src/auth.ts:15: error: Property 'token' does not exist on type 'User' [typescript]
+src/auth.ts:42: warning: 'validate' is declared but never used [typescript]
 ```
 
 ### Remote URL
