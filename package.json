@@ -3,7 +3,7 @@
   "displayName": "Grab",
   "description": "Grab context from VSCode for external AI tools — paths, code snippets, remote URLs",
   "version": "0.4.0",
-  "publisher": "janne-waren",
+  "publisher": "jannewaren",
   "license": "MIT",
   "engines": {
     "vscode": "^1.74.0"
