@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0
+
+### Changed
+
+- Reduced default keybindings from 10 to 2 (`Cmd+Shift+Alt+C` for Path with Line, `Cmd+Shift+Alt+X` for Code with Context)
+
+### Added
+
+- Getting Started walkthrough (Command Palette → "Get Started with Grab")
+- Suggested shortcut documentation for all unbound commands
+
 ## 0.2.0
 
 ### Added

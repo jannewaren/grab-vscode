@@ -2,7 +2,7 @@
   "name": "grab",
   "displayName": "Grab",
   "description": "Grab context from VSCode for external AI tools — paths, code snippets, remote URLs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "publisher": "janne-waren",
   "license": "MIT",
   "engines": {
@@ -63,49 +63,48 @@
         "mac": "cmd+shift+alt+c"
       },
       {
-        "command": "grab.fullPathWithLine",
-        "key": "ctrl+shift+alt+f",
-        "mac": "cmd+shift+alt+f"
-      },
-      {
-        "command": "grab.path",
-        "key": "ctrl+shift+alt+r",
-        "mac": "cmd+shift+alt+r"
-      },
-      {
-        "command": "grab.fullPath",
-        "key": "ctrl+shift+alt+a",
-        "mac": "cmd+shift+alt+a"
-      },
-      {
-        "command": "grab.allOpenPaths",
-        "key": "ctrl+shift+alt+o",
-        "mac": "cmd+shift+alt+o"
-      },
-      {
         "command": "grab.codeWithContext",
         "key": "ctrl+shift+alt+x",
         "mac": "cmd+shift+alt+x"
-      },
+      }
+    ],
+    "walkthroughs": [
       {
-        "command": "grab.symbolContext",
-        "key": "ctrl+shift+alt+s",
-        "mac": "cmd+shift+alt+s"
-      },
-      {
-        "command": "grab.diagnosticsFile",
-        "key": "ctrl+shift+alt+d",
-        "mac": "cmd+shift+alt+d"
-      },
-      {
-        "command": "grab.diagnosticsAll",
-        "key": "ctrl+shift+alt+e",
-        "mac": "cmd+shift+alt+e"
-      },
-      {
-        "command": "grab.remoteUrl",
-        "key": "ctrl+shift+alt+g",
-        "mac": "cmd+shift+alt+g"
+        "id": "grab.getStarted",
+        "title": "Get Started with Grab",
+        "description": "Copy paths, code, and context from VSCode for external AI tools.",
+        "steps": [
+          {
+            "id": "grab.walkthrough.pathWithLine",
+            "title": "Copy a Path with Line Number",
+            "description": "Place your cursor on any line and press **Cmd+Shift+Alt+C** (Mac) or **Ctrl+Shift+Alt+C** (Windows/Linux) to copy the relative path with line number.\n\nPaste into any AI tool to give it precise file context.\n\n[Try it now](command:grab.pathWithLine)",
+            "media": {
+              "markdown": "media/step-path-with-line.md"
+            },
+            "completionEvents": [
+              "onCommand:grab.pathWithLine"
+            ]
+          },
+          {
+            "id": "grab.walkthrough.codeWithContext",
+            "title": "Grab Code with Context",
+            "description": "Select some code and press **Cmd+Shift+Alt+X** (Mac) or **Ctrl+Shift+Alt+X** (Windows/Linux) to copy a fenced markdown block with the file path.\n\nPerfect for pasting into ChatGPT, Claude, or any AI assistant.\n\n[Try it now](command:grab.codeWithContext)",
+            "media": {
+              "markdown": "media/step-code-with-context.md"
+            },
+            "completionEvents": [
+              "onCommand:grab.codeWithContext"
+            ]
+          },
+          {
+            "id": "grab.walkthrough.moreShortcuts",
+            "title": "Add More Shortcuts",
+            "description": "Grab has 8 more commands without default shortcuts. Add your own keybindings for the ones you use most.\n\n[Open Keyboard Shortcuts](command:workbench.action.openGlobalKeybindings)",
+            "media": {
+              "markdown": "media/step-more-shortcuts.md"
+            }
+          }
+        ]
       }
     ],
     "configuration": {

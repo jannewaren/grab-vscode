@@ -2,24 +2,41 @@
 
 Grab context from VSCode for external AI tools — paths, code snippets, symbol definitions, diagnostics, and remote URLs.
 
-Type `Grab:` in the Command Palette to see all commands.
+## Quick Start
 
-## Commands
-
-| Shortcut | Command | Output |
+| Shortcut | Command | What it copies |
 |---|---|---|
-| `Cmd+Shift+Alt+C` | Grab: Path with Line | `src/file.ts:42` or `src/file.ts:42-50` |
-| `Cmd+Shift+Alt+F` | Grab: Full Path with Line | `/Users/.../file.ts:42` |
-| `Cmd+Shift+Alt+R` | Grab: Relative Path | `src/file.ts` |
-| `Cmd+Shift+Alt+A` | Grab: Full Path | `/Users/.../file.ts` |
-| `Cmd+Shift+Alt+O` | Grab: All Open Paths | Newline-separated relative paths |
+| `Cmd+Shift+Alt+C` | Grab: Path with Line | `src/file.ts:42` |
 | `Cmd+Shift+Alt+X` | Grab: Code with Context | Path + fenced code block |
-| `Cmd+Shift+Alt+S` | Grab: Symbol Context | Full symbol definition + path |
-| `Cmd+Shift+Alt+D` | Grab: Diagnostics (File) | Errors/warnings for current file |
-| `Cmd+Shift+Alt+E` | Grab: Diagnostics (All) | Errors/warnings for entire workspace |
-| `Cmd+Shift+Alt+G` | Grab: Remote URL | GitHub/GitLab permalink |
 
 On Windows/Linux, use `Ctrl` instead of `Cmd`.
+
+Type `Grab:` in the Command Palette to see all 10 commands.
+
+## All Commands
+
+| Command | Default Shortcut | Suggested Shortcut | Output |
+|---|---|---|---|
+| Path with Line | `Cmd+Shift+Alt+C` | — | `src/file.ts:42` or `src/file.ts:42-50` |
+| Full Path with Line | — | `Cmd+Shift+Alt+F` | `/Users/.../file.ts:42` |
+| Relative Path | — | `Cmd+Shift+Alt+R` | `src/file.ts` |
+| Full Path | — | `Cmd+Shift+Alt+A` | `/Users/.../file.ts` |
+| All Open Paths | — | `Cmd+Shift+Alt+O` | Newline-separated relative paths |
+| Code with Context | `Cmd+Shift+Alt+X` | — | Path + fenced code block |
+| Symbol Context | — | `Cmd+Shift+Alt+S` | Full symbol definition + path |
+| Diagnostics (File) | — | `Cmd+Shift+Alt+D` | Errors/warnings for current file |
+| Diagnostics (All) | — | `Cmd+Shift+Alt+E` | Errors/warnings for entire workspace |
+| Remote URL | — | `Cmd+Shift+Alt+G` | GitHub/GitLab permalink |
+
+## Adding Keyboard Shortcuts
+
+1. Open **Keyboard Shortcuts** with `Cmd+K Cmd+S`
+2. Search for **"grab"**
+3. Click the **+** icon next to the command you want to bind
+4. Press your desired shortcut (e.g. `Cmd+Shift+Alt+F`)
+5. Press **Enter** to confirm
+
+On Windows/Linux, use **Ctrl** instead of **Cmd**.
 
 ## Examples
 
